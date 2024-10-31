@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Newsplugin" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+
+	<description>A custom set of rules to check for a WordPress project running Eightshift coding standards for WP.</description>
+
+	<rule ref="Eightshift">
+		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
+		<exclude name="PSR1.Files.SideEffects.FoundWithSymbols" />
+		<exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
+		<exclude name="Squiz.Files.FileExtension.ClassFound" />
+		<exclude name="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps" />
+		<exclude name="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
+		<exclude name="Squiz.NamingConventions.ValidVariableName.StringNotCamelCaps" />
+		<exclude name="Squiz.Classes.ValidClassName.NotCamelCaps" />
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound" />
+		<!-- Used for diagnostic -->
+		<!-- <exclude name="WordPress.WP.AlternativeFunctions.curl_curl_init" />
+		<exclude name="WordPress.WP.AlternativeFunctions.curl_curl_setopt" />
+		<exclude name="WordPress.WP.AlternativeFunctions.curl_curl_exec" />
+		<exclude name="WordPress.WP.AlternativeFunctions.curl_curl_exec" />
+		<exclude name="WordPress.WP.AlternativeFunctions.curl_curl_error" />
+		<exclude name="WordPress.WP.AlternativeFunctions.curl_curl_close" /> -->
+
+		<!-- Alternative to mysqli in MySQL < 4.1  -->
+		<exclude name="WordPress.DB.RestrictedFunctions.mysql_mysqli_get_server_info" />
+		<exclude name="WordPress.DB.RestrictedFunctions.mysql_mysqli_get_client_info" />
+		<exclude name="WordPress.DB.RestrictedFunctions.mysql_mysqli_get_proto_info" />
+		<exclude name="WordPress.DB.RestrictedFunctions.mysql_mysql_get_server_info" />
+		<exclude name="WordPress.DB.RestrictedFunctions.mysql_mysql_get_client_info" />
+		<exclude name="WordPress.DB.RestrictedFunctions.mysql_mysql_get_proto_info" />
+
+		<!-- TODO - fix later this in the code -->
+		<exclude name="WordPress.WP.AlternativeFunctions.parse_url_parse_url" />
+		<exclude name="WordPress.WP.AlternativeFunctions.file_system_read_fwrite" />
+		<exclude name="WordPress.WP.AlternativeFunctions.file_system_read_fread" />
+		<exclude name="WordPress.WP.AlternativeFunctions.file_system_read_fclose" />
+	</rule>
+
+	<!-- Exclude the Composer Vendor directory. -->
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<!-- Exclude the Node Modules directory. -->
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+
+	<!-- Exclude minified Javascript files. -->
+	<exclude-pattern>*.min.js</exclude-pattern>
+
+	<!-- Additional arguments. -->
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+	<arg name="parallel" value="8"/>
+	<arg name="cache"/>
+	<arg name="extensions" value="php"/>
+
+	<file>.</file>
+
+	<!-- Check for PHP cross-version compatibility. -->
+	<config name="testVersion" value="5.6-"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!--
+  Additional custom properties
+  Adjust the values of these properties to fit you needs.
+  For information on additional custom properties available, check out
+  the wiki:
+  https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties
+  -->
+	<config name="minimum_supported_wp_version" value="3.9"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="news_plugin"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="News_Plugin"/>
+			</property>
+		</properties>
+	</rule>
+
+</ruleset>

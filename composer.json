@@ -1,0 +1,18 @@
+{
+  "name": "ipdgroup/newsplugin-wp",
+  "type": "project",
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+    "infinum/eightshift-coding-standards": "^1.1"
+  },
+  "authors": [
+    {
+      "name": "Karolína Vyskočilová",
+      "email": "karolina@kybernaut.cz"
+    }
+  ],
+  "scripts": {
+    "standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+    "standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+  }
+}

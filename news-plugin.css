@@ -1,0 +1,48 @@
+// Sample CSS for the NewsPlugin widget.
+
+.widget_news_plugin_widget ul {
+	list-style: none;
+}
+
+.news-plugin-title {
+	// color: #AAAAAA;
+	font-weight: bold;
+	white-space: normal;
+}
+
+.news-plugin-date {
+	// color: #AAAAAA;
+	font-size: 80%;
+}
+
+.news-plugin-source {
+	// color: #AAAAAA;
+	font-size: 90%;
+}
+
+.news-plugin-source:before {
+	content: "(";
+}
+
+.news-plugin-source:after {
+	content: ")";
+}
+
+.news-plugin-abstract {
+	display: block;
+	margin: 4px 0px 0px 8px;
+}
+
+.news-plugin-edit-box {
+	border: 1px solid #888888;
+	background-color: #DDDDDD;
+	// color: #000000;
+	padding: 8px 16px;
+}
+
+.news-plugin-edit-box a {
+	// color: #AAAAAA;
+	text-decoration: underline;
+}
+
+// EOF //
